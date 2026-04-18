@@ -1,4 +1,8 @@
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({
+  quiet: true,
+  path: path.join(__dirname, "..", ".env")
+});
 
 const db_url = process.env.DB_URL.replace(
   "<db_password>",
