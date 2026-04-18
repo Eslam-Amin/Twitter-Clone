@@ -3,9 +3,6 @@ const app = express();
 const appRoutes = express.Router();
 const middleware = require("../middleware");
 
-app.set("view engine", "pug");
-app.set("views", "views");
-
 // Routes
 const loginRoutes = require("./login.routes");
 const registerRoutes = require("./register.routes");
