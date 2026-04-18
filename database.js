@@ -10,7 +10,7 @@ class Database {
     mongoose
       .connect(config.database.url)
       .then(() => {
-        console.log("Database connected");
+        console.log("Database connected successfully");
       })
       .catch((err) => {
         console.log("Database connection error: " + err);
