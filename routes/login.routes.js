@@ -5,7 +5,7 @@ const router = express.Router();
 app.set("view engine", "pug");
 app.set("views", "views");
 
-router.get("/", (req, res, next) => {
+router.get("/login", (req, res, next) => {
   const payload = {
     pageTitle: "Login"
   };
