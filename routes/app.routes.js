@@ -8,7 +8,9 @@ app.set("views", "views");
 
 // Routes
 const loginRoutes = require("./login.routes");
-appRoutes.use("/", loginRoutes);
+const registerRoutes = require("./register.routes");
+appRoutes.use("/login", loginRoutes);
+appRoutes.use("/register", registerRoutes);
 
 appRoutes.get("/", middleware.requireLogin, (req, res, next) => {
   const payload = {
