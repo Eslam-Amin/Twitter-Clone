@@ -1,8 +1,12 @@
 const path = require("path");
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 const port = 3003;
 const appRoutes = require("./routes/app.routes");
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set("view engine", "pug");
 app.set("views", "views");
