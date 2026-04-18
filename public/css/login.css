@@ -8,7 +8,8 @@ body {
   margin-top: 20px;
 }
 
-.loginContainer {
+.loginContainer,
+.registerContainer {
   padding: 20px;
   width: 80%;
   max-width: 500px;
