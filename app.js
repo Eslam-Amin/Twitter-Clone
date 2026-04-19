@@ -5,6 +5,16 @@ const database = require("./database");
 const app = express();
 const port = 3003;
 const appRoutes = require("./routes/app.routes");
+const session = require("express-session");
+const config = require("./config");
+
+app.use(
+  session({
+    secret: config.session.secret,
+    resave: true, // force the session to be saved back to the session store
+    saveUninitialized: false // don't create session until something stored
+  })
+);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
