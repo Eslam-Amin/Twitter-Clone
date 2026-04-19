@@ -10,8 +10,10 @@ appRoutes.use("/login", loginRoutes);
 appRoutes.use("/register", registerRoutes);
 
 appRoutes.get("/", middleware.requireLogin, (req, res, next) => {
+  const user = req.session.user;
   const payload = {
-    pageTitle: "Home"
+    pageTitle: "Home",
+    loggedInUser: user
   };
   res.status(200).render("home", payload);
 });
