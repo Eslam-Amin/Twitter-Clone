@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const User = require("../models/user.model");
+const bcrypt = require("bcrypt");
 
 router
   .get("/", (req, res, next) => {
@@ -26,30 +27,32 @@ router
         (err) => {
           console.log(err);
           payload.errorMessage = "Something went wrong";
-          res.status(400).render("register", payload);
+          return res.status(400).render("register", payload);
         }
       );
       if (user) {
         if (user.email === email) payload.errorMessage = "Email already exists";
         else if (user.username === username)
           payload.errorMessage = "Username already exists";
-        res.status(400).render("register", payload);
+        return res.status(400).render("register", payload);
       } else {
+        const hashedPassword = await bcrypt.hash(password, 10);
         const user = new User({
-          firstName: firstName,
-          lastName: lastName,
-          username: username,
-          email: email,
-          password: password,
-          passwordConf: passwordConf
+          firstName,
+          lastName,
+          username,
+          email,
+          password: hashedPassword
         });
         user.save();
-        res.redirect("/login");
+        return res.redirect("/login");
       }
     } else {
       payload.errorMessage = "Make Sure each field has a value";
     }
-    res.status(200).render("register", payload);
+    return res
+      .status(200)
+      .render("register", { ...payload, pageTitle: "Register" });
   });
 
 module.exports = router;
