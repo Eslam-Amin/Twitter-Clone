@@ -5,8 +5,11 @@ const middleware = require("../middleware");
 
 // Routes
 const loginRoutes = require("./login.routes");
+const logoutRoutes = require("./logout.routes");
 const registerRoutes = require("./register.routes");
+
 appRoutes.use("/login", loginRoutes);
+appRoutes.use("/logout", logoutRoutes);
 appRoutes.use("/register", registerRoutes);
 
 appRoutes.get("/", middleware.requireLogin, (req, res, next) => {
