@@ -45,7 +45,8 @@ router
           password: hashedPassword
         });
         user.save();
-        return res.redirect("/login");
+        req.session.user = user;
+        return res.redirect("/");
       }
     } else {
       payload.errorMessage = "Make Sure each field has a value";
