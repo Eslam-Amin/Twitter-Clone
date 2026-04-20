@@ -38,6 +38,7 @@ nav a {
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  color: #212529;
 }
 
 nav a.blue {
