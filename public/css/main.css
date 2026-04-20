@@ -1,5 +1,6 @@
 :root {
   --main-color: #1fa2f1;
+  --secondary-color: #9bd1f9;
   --button-hover-bg: #d4edff;
   --border-color: rgb(230, 236, 240);
   --border-style: 1px solid var(--border-color);
@@ -70,4 +71,47 @@ nav a:hover {
 
 .titleContainer h1 {
   display: flex;
+}
+
+.postFormContainer {
+  display: flex;
+  padding: var(--spacing);
+  flex-shrink: 0;
+  border-bottom: 10px solid var(--border-color);
+}
+
+.userImageContainer {
+  width: 50px;
+  height: 50px;
+}
+
+.userImageContainer img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.textareaContainer {
+  flex: 1;
+  padding-left: var(--spacing);
+}
+
+.textareaContainer textarea {
+  width: 100%;
+  border: none;
+  resize: none;
+  font-size: 19px;
+}
+
+#submitPostButton {
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 40px;
+  border: none;
+  padding: 7px 15px;
+}
+
+#submitPostButton:disabled {
+  background-color: var(--secondary-color);
 }
