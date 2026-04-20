@@ -1,10 +1,19 @@
 :root {
   --main-color: #1fa2f1;
-  --buttonHoverBG: #d4edff;
+  --button-hover-bg: #d4edff;
+  --border-color: rgb(230, 236, 240);
+  --border-style: 1px solid var(--border-color);
+  --spacing: 15px;
 }
 
 a {
   color: inherit;
+}
+
+h1 {
+  font-size: 19px;
+  font-weight: 800;
+  margin: 0;
 }
 
 a:hover {
@@ -22,9 +31,9 @@ nav {
 nav a {
   display: block;
   padding: 10px;
-  font-size: 30px;
-  width: 55px;
-  height: 55px;
+  font-size: 25px;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,11 +45,28 @@ nav a.blue {
 }
 
 nav a:hover {
-  background-color: var(--buttonHoverBG);
+  background-color: var(--button-hover-bg);
   color: var(--main-color);
   border-radius: 50%;
 }
 
 .mainSectionContainer {
-  background-color: blue;
+  padding: 0;
+  border-left: var(--border-style);
+  border-right: var(--border-style);
+  display: flex;
+  flex-direction: column;
+}
+
+.titleContainer {
+  height: 53px;
+  padding: 0 var(--spacing);
+  display: flex;
+  align-items: center;
+  border-bottom: var(--border-style);
+  flex-shrink: 0;
+}
+
+.titleContainer h1 {
+  display: flex;
 }
