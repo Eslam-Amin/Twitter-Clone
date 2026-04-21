@@ -3,22 +3,16 @@ const config = require("./config");
 
 class Database {
   constructor() {
-    this.connect();
+    // this.connect();
   }
 
   connect() {
-    mongoose
-      .connect(config.database.url)
-      .then(() => {
-        console.log("Database connected successfully");
-      })
-      .catch((err) => {
-        console.log("Database connection error: " + err);
-      });
+    console.log("🚀 ~ Database ~ connecting ~");
+    return mongoose.connect(config.database.url);
   }
 
   disconnect() {
-    mongoose.disconnect();
+    return mongoose.disconnect();
   }
 }
 
