@@ -6,11 +6,12 @@ const Post = require("../../models/post.model");
 
 router
   .route("/")
-  .get((req, res, next) => {
+  .get(async (req, res, next) => {
+    const posts = await Post.find({}).populate("postedBy");
     const payload = {
       pageTitle: "Post"
     };
-    res.status(200).render("post", payload);
+    res.status(200).send(posts);
   })
   .post(async (req, res, next) => {
     const { content } = req.body;
