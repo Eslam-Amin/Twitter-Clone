@@ -19,8 +19,8 @@ router
       content,
       postedBy: req.session.user
     };
-    let post = Post.create(postData);
-    post = await User.populate(post, { path: "postedBy" });
+    let post = await (await Post.create(postData)).populate("postedBy");
+    // post = await User.populate(post, { path: "postedBy" });
     return res.status(201).send(post);
   });
 
