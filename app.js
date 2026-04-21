@@ -25,6 +25,14 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", appRoutes);
 
-const server = app.listen(port, () => {
-  console.log(`server is running on port ${port}`);
-});
+database
+  .connect()
+  .then(() => {
+    console.log("Database connected successfully");
+    const server = app.listen(port, () => {
+      console.log(`server is running on port ${port}`);
+    });
+  })
+  .catch((err) => {
+    console.log("Database connection error: " + err);
+  });
