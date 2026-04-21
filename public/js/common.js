@@ -24,7 +24,6 @@ $("#submitPostButton").click((event) => {
 
 function createPostChild(postData) {
   const postedBy = postData.postedBy;
-  const displayName = `${postedBy.firstName} ${postedBy.lastName}`;
   const timestamp = postData.createdAt;
   console.log("🚀 ~ createPostChild ~ postedBy:", postedBy);
 
@@ -36,7 +35,7 @@ function createPostChild(postData) {
       </div>
       <div class="postContentContainer">
         <div class="postHeader">
-          <a href="/profile/${postedBy.username}" class="displayName">${displayName}</a>
+          <a href="/profile/${postedBy.username}" class="displayName">${postedBy.fullName}</a>
           <span class="username">@${postedBy.username}</span>
           <span class="date">${timestamp}</span>
       </div>
