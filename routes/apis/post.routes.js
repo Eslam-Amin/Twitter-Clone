@@ -7,7 +7,9 @@ const Post = require("../../models/post.model");
 router
   .route("/")
   .get(async (req, res, next) => {
-    const posts = await Post.find({}).populate("postedBy");
+    const posts = await Post.find({})
+      .populate("postedBy")
+      .sort({ createdAt: -1 });
     const payload = {
       pageTitle: "Post"
     };
