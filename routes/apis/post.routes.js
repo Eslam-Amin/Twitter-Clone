@@ -35,11 +35,15 @@ router.route("/:id/like").put(async (req, res, next) => {
   req.session.user = await User.findByIdAndUpdate(
     user._id,
     { [option]: { likes: postId } },
-    { new: true }
+    { returnDocument: "after" }
   );
-  const post = await Post.findByIdAndUpdate(postId, {
-    [option]: { likes: user._id }
-  });
+  const post = await Post.findByIdAndUpdate(
+    postId,
+    {
+      [option]: { likes: user._id }
+    },
+    { returnDocument: "after" }
+  );
 
   return res.status(200).send(post);
 });
