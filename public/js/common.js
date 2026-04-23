@@ -25,6 +25,14 @@ $("#submitPostButton").click((event) => {
 $(document).on("click", ".likeButton", (event) => {
   const button = $(event.target);
   const postId = getPostIdFromElement(button);
+  if (!postId) return;
+  $.ajax({
+    url: `/api/posts/${postId}/like`,
+    method: "PUT",
+    success: (res) => {
+      button.find("span").text(res.likes.length || "");
+    }
+  });
 });
 
 function getPostIdFromElement(element) {
@@ -70,6 +78,7 @@ function createPostChild(postData) {
       <div class="postButtonsContainer">
         <button class="likeButton">
             <i class="far fa-heart"></i>
+            <span class="likesCount">${postData.likes.length || ""}</span>
           </button>
         </div>
       </div>
